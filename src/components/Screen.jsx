@@ -1,7 +1,8 @@
 import { useState } from "react"
+import { useGlobalContext } from "./context"
 
-const Screen = ({ display }) => {
-
+const Screen = () => {
+    const { display } = useGlobalContext()
     return (
         <div className="screen">{display}</div>
     )

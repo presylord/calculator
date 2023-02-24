@@ -1,11 +1,11 @@
 import Button from "./Button"
 
 
-const ButtonBox = ({ calcuDigits, handleClick }) => {
+const ButtonBox = ({ calcuDigits }) => {
     return (
         <div className="buttonBox">
             {calcuDigits.map((digit, index) => {
-                return <Button key={index} digit={digit} handleClick={handleClick} />
+                return <Button key={index} digit={digit} />
             })}
         </div>
     )
