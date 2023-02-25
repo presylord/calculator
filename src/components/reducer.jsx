@@ -22,19 +22,48 @@ const reducer = (state, action) => {
                 operation: "",
                 display: ""
             }
+        case "PERCENT":
+            if (state.operation === "") {
+                console.log('trigger')
+                state.display = state.currentSession.first + "%"
+                state.currentSession.first = [state.currentSession.first / 100]
+            } else {
+                state.display = state.currentSession.second + "%"
+                state.currentSession.second = [state.currentSession.second / 100]
+            }
+            console.log(state)
+            return { ...state }
+        case "TOGGLE_SIGN":
+            if (state.operation === "") {
+                console.log('sign')
+                state.currentSession.first = [state.currentSession.first * -1]
+                state.display = state.currentSession.first
+            } else {
+                state.currentSession.second = [state.currentSession.second * -1]
+                state.display = state.currentSession.second
+            }
+            console.log(state)
+            return { ...state }
         case "ADD":
-            console.log('ADD')
+            if (state.currentSession.first.length) {
+                return { ...state, operation: "ADD", display: "+" }
 
-            return { ...state, operation: "ADD", display: "+" }
+            } return { ...state }
+
         case "SUBTRACT":
-            console.log('SUBTRACT')
-            return { ...state, operation: "SUBTRACT", display: "-" }
+            if (state.currentSession.first.length) {
+                return { ...state, operation: "SUBTRACT", display: "-" }
+
+            } return { ...state }
         case "MULTIPLY":
-            console.log('MULTIPLY')
-            return { ...state, operation: "MULTIPLY", display: "×" }
+            if (state.currentSession.first.length) {
+                return { ...state, operation: "MULTIPLY", display: "×" }
+
+            } return { ...state }
         case "DIVIDE":
-            console.log('DIVIDE')
-            return { ...state, operation: "DIVIDE", display: "÷" }
+            if (state.currentSession.first.length) {
+                return { ...state, operation: "DIVIDE", display: "÷" }
+            } return { ...state }
         case "EQUAL":
             console.log("equal")
             if (state.operation == "ADD") {

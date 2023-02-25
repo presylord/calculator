@@ -32,6 +32,10 @@ export const AppContext = ({ children }) => {
             dispatch({ type: "EQUAL" })
         } else if (digit == "c") {
             dispatch({ type: "CLEAR" })
+        } else if (digit == "%") {
+            dispatch({ type: "PERCENT" })
+        } else if (digit == "±") {
+            dispatch({ type: "TOGGLE_SIGN" })
         }
     }
 
